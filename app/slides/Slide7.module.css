@@ -1,0 +1,625 @@
+/* ========== SLIDE 7: DIGITAL MICROFLUIDICS ========== */
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+}
+
+/* Base visibility */
+.titleSection,
+.traditionalLab,
+.chipSection,
+.operationsSection,
+.codeSection,
+.benefitsSection,
+.transformSection {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* ========== TITLE ========== */
+.titleSection {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.mainTitle {
+  font-size: 52px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 28px;
+  color: #0066FF;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* ========== TRADITIONAL LAB ========== */
+.traditionalLab {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.labFadeOut {
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(0.8);
+}
+
+.labLabel {
+  font-size: 16px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.labEquipment {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+  position: relative;
+}
+
+/* Beaker */
+.beaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.beakerGlass {
+  width: 60px;
+  height: 70px;
+  border: 3px solid #a0c4ff;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(200,220,255,0.2);
+}
+
+.beakerLiquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #74b9ff 0%, #0984e3 100%);
+  border-radius: 0 0 4px 4px;
+}
+
+.beakerBase {
+  width: 80px;
+  height: 8px;
+  background: #a0c4ff;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Flask */
+.flask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flaskNeck {
+  width: 20px;
+  height: 30px;
+  border: 3px solid #a0c4ff;
+  border-bottom: none;
+  background: rgba(200,220,255,0.2);
+}
+
+.flaskBody {
+  width: 80px;
+  height: 60px;
+  border: 3px solid #a0c4ff;
+  border-radius: 0 0 40px 40px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(200,220,255,0.2);
+}
+
+.flaskLiquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(180deg, #a29bfe 0%, #6c5ce7 100%);
+  border-radius: 0 0 36px 36px;
+}
+
+/* Test tube */
+.testTube {
+  width: 24px;
+  height: 80px;
+  border: 3px solid #a0c4ff;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(200,220,255,0.2);
+}
+
+.tubeLiquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: linear-gradient(180deg, #55efc4 0%, #00b894 100%);
+  border-radius: 0 0 8px 8px;
+}
+
+/* Cross out */
+.crossOut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+}
+
+.crossOut svg {
+  width: 100%;
+  height: 100%;
+}
+
+.crossOut svg line {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+}
+
+.crossAnim {
+  opacity: 1;
+}
+
+.crossAnim svg line {
+  animation: drawCross 0.5s ease forwards;
+}
+
+@keyframes drawCross {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ========== CHIP SECTION ========== */
+.chipSection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chipMoveLeft {
+  left: 25%;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.chipSurface {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(145deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  transform: perspective(800px) rotateX(5deg) rotateY(-3deg);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.15),
+    0 10px 20px rgba(0,0,0,0.1),
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 0 rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.electrodeGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.electrode {
+  background: linear-gradient(145deg, #ffffff 0%, #f5f7fa 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(180,200,220,0.5);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.chipLabel {
+  font-size: 14px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Droplets */
+.droplet {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.droplet1 { 
+  top: 40px; 
+  left: 40px; 
+  background: radial-gradient(circle at 30% 30%, #74b9ff, #0066FF);
+  box-shadow: 0 4px 12px rgba(0,102,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.2);
+}
+
+.droplet2 { 
+  top: 120px; 
+  left: 100px; 
+  background: radial-gradient(circle at 30% 30%, #a29bfe, #6c5ce7);
+  box-shadow: 0 4px 12px rgba(108,92,231,0.4), inset 0 -2px 4px rgba(0,0,0,0.2);
+}
+.droplet3 { 
+  top: 80px; 
+  right: 60px; 
+  background: radial-gradient(circle at 30% 30%, #55efc4, #00b894);
+  box-shadow: 0 4px 12px rgba(0,184,148,0.4), inset 0 -2px 4px rgba(0,0,0,0.2);
+}
+
+.dropletAnimate1 {
+  animation: dropletMove1 4s ease-in-out infinite;
+}
+
+.dropletAnimate2 {
+  animation: dropletMove2 5s ease-in-out infinite;
+}
+
+.dropletAnimate3 {
+  animation: dropletMove3 4.5s ease-in-out infinite;
+}
+
+@keyframes dropletMove1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(60px, 0); }
+  50% { transform: translate(60px, 60px); }
+  75% { transform: translate(0, 60px); }
+}
+
+@keyframes dropletMove2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(40px, -40px); }
+  66% { transform: translate(80px, 0); }
+}
+
+@keyframes dropletMove3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, 60px); }
+}
+
+/* ========== OPERATIONS SECTION ========== */
+.operationsSection {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.operationsHide {
+  opacity: 0 !important;
+  transform: translateX(-50%) translateY(20px);
+}
+
+.operationsTitle {
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.operations {
+  display: flex;
+  gap: 40px;
+}
+
+.operation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.opAnim {
+  animation: opFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes opFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.opVisual {
+  width: 60px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opDroplet {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #74b9ff, #0066FF);
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.opDropletSmall {
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #74b9ff, #0066FF);
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+}
+
+.opArrow, .opSplit, .opMerge {
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 20px;
+}
+
+.heatWaves {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.heatWave {
+  width: 3px;
+  height: 16px;
+  background: linear-gradient(180deg, #e74c3c 0%, transparent 100%);
+  border-radius: 2px;
+  animation: heatPulse 0.8s ease-in-out infinite alternate;
+}
+
+.heatWave:nth-child(2) {
+  animation-delay: 0.2s;
+  height: 20px;
+}
+
+@keyframes heatPulse {
+  from { opacity: 0.5; transform: scaleY(0.8); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.opLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* ========== CODE SECTION ========== */
+.codeSection {
+  position: absolute;
+  top: 50%;
+  right: 140px;
+  transform: translateY(-50%);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.codeMoveRight {
+  /* No change when transformation appears */
+}
+
+.codeTitle {
+  font-size: 16px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.codeBlock {
+  background: #1e1e2e;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 2;
+  color: #cdd6f4;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.codeTypeIn {
+  animation: codeType 0.4s ease forwards;
+}
+
+@keyframes codeType {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.lineNum {
+  color: #6c7086;
+  margin-right: 16px;
+  min-width: 16px;
+}
+
+.func {
+  color: #89b4fa;
+}
+
+.arg {
+  color: #a6e3a1;
+}
+
+.num {
+  color: #fab387;
+}
+
+/* ========== BENEFITS SECTION ========== */
+.benefitsSection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.benefitAnim {
+  animation: benefitSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes benefitSlide {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.benefitIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.benefitIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.benefitText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.benefitTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.benefitDesc {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ========== TRANSFORM SECTION ========== */
+.transformSection {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.transformContainer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.fromState, .toState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stateLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.stateIcon {
+  font-size: 48px;
+}
+
+.fromState .stateLabel {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.toState .stateLabel {
+  color: #0066FF;
+}
+
+.transformArrow {
+  width: 120px;
+  height: 40px;
+}
+
+.transformArrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.transformArrow svg path {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+}
+
+.arrowAnim svg path {
+  animation: drawArrow 0.8s ease forwards;
+}
+
+@keyframes drawArrow {
+  to { stroke-dashoffset: 0; }
+}

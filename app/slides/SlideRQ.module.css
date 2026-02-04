@@ -1,0 +1,40 @@
+/* ========== RESEARCH QUESTION SLIDE ========== */
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 850px;
+  text-align: center;
+  padding: 0 60px;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.label {
+  font-size: 14px;
+  color: #0066FF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.question {
+  font-size: 32px;
+  color: #1a1a1a;
+  line-height: 1.5;
+  font-weight: 400;
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Text Pro';
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+}
+
+body {
+  background: #fff;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

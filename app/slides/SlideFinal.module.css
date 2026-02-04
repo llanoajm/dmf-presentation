@@ -1,0 +1,98 @@
+/* ========== FINAL SLIDE: TECHNICAL APPROACH (CLEAN) ========== */
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+/* ========== HARDWARE SECTION ========== */
+.hardwareSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dropbotImage {
+  border-radius: 16px;
+}
+
+.hardwareLabel {
+  font-size: 14px;
+  color: #888;
+  letter-spacing: 0.02em;
+}
+
+/* ========== DIVIDER ========== */
+.divider {
+  width: 1px;
+  height: 300px;
+  background: linear-gradient(180deg, transparent 0%, #ddd 20%, #ddd 80%, transparent 100%);
+}
+
+/* ========== METHODS SECTION ========== */
+.methodsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.methodsTitle {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.methodsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.method {
+  font-size: 22px;
+  color: #1a1a1a;
+  font-weight: 500;
+  padding-left: 16px;
+  border-left: 3px solid #0066FF;
+}
+
+/* ========== LOGOS SECTION ========== */
+.logosSection {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: -0.01em;
+}
+
+.logoDot {
+  width: 4px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 50%;
+}

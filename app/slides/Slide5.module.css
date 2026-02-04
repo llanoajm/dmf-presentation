@@ -1,0 +1,577 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base animations */
+.titleSection,
+.harderSection,
+.bottleneckSection,
+.pillarsSection,
+.rlSection,
+.comparisonSection,
+.materialsProblems {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* ========== TITLE SECTION ========== */
+.titleSection {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.titleMoveUp {
+  top: 80px;
+  transform: translateY(0) scale(0.8);
+}
+
+.mainTitle {
+  font-size: 52px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0;
+}
+
+.aiSuccesses {
+  display: flex;
+  gap: 60px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.successesHide {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.successItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.successAnim {
+  animation: successFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes successFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.3);
+}
+
+.successIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.successItem span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.checkMark {
+  color: #0066FF !important;
+  font-size: 24px !important;
+}
+
+/* ========== HARDER SECTION ========== */
+.harderSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.harderHide {
+  opacity: 0 !important;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.usualAnswer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.usualLabel {
+  font-size: 20px;
+  color: #888;
+  font-style: italic;
+}
+
+.harderText {
+  position: relative;
+  font-size: 36px;
+  font-weight: 600;
+  color: #666;
+}
+
+.strikethrough {
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  right: -10px;
+  height: 4px;
+  background: #e74c3c;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.strikeAnim {
+  animation: strike 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes strike {
+  to { transform: scaleX(1); }
+}
+
+/* ========== BOTTLENECK SECTION ========== */
+.bottleneckSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottleneckMoveUp {
+  transform: translateY(-180px) scale(0.7);
+  opacity: 0.4;
+}
+
+.bottleneckHide {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.bottleneckCompare {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.notBottleneck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+}
+
+.notLabel {
+  font-size: 20px;
+  color: #888;
+}
+
+.notValue {
+  font-size: 36px;
+  font-weight: 600;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.isBottleneck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.isLabel {
+  font-size: 24px;
+  color: #1a1a1a;
+}
+
+.isValue {
+  font-size: 56px;
+  font-weight: 800;
+  color: #e74c3c;
+  letter-spacing: 0.02em;
+}
+
+/* ========== PILLARS SECTION ========== */
+.pillarsSection {
+  position: absolute;
+  left: 100px;
+  bottom: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pillarsMoveLeft {
+  transform: translateX(-30px) scale(0.9);
+}
+
+.pillarsTitle {
+  font-size: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pillar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.pillarAnim {
+  animation: pillarSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pillarSlide {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.pillarIcon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.pillarIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.pillarLabel {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* ========== RL ROBOT SECTION ========== */
+.rlSection {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rlMoveRight {
+  transform: translateX(-50%) translateX(-30px) scale(0.7);
+}
+
+.rlContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.robotArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.robot {
+  width: 80px;
+  height: 100px;
+  position: relative;
+}
+
+.robotHead {
+  width: 50px;
+  height: 40px;
+  background: linear-gradient(180deg, #5dade2 0%, #3498db 100%);
+  border-radius: 10px 10px 5px 5px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.robotEye {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+.robotBody {
+  width: 60px;
+  height: 45px;
+  background: linear-gradient(180deg, #85c1e9 0%, #5dade2 100%);
+  border-radius: 5px 5px 10px 10px;
+  margin: 5px auto 0;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.robotArm {
+  position: absolute;
+  right: -5px;
+  top: 50px;
+  width: 25px;
+  height: 8px;
+  background: #3498db;
+  border-radius: 4px;
+  transform-origin: left center;
+}
+
+.robotAnimate .robotArm {
+  animation: armMove 0.5s ease-in-out infinite;
+}
+
+@keyframes armMove {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(20deg); }
+}
+
+.attempts {
+  display: flex;
+  gap: 8px;
+}
+
+.attempt {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.attemptFail {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.attemptSuccess {
+  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+}
+
+.attemptAnim {
+  animation: attemptPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes attemptPop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lossChart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chartArea {
+  position: relative;
+  width: 200px;
+  height: 100px;
+}
+
+.chartSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.lossLine {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+}
+
+.lossAnimate {
+  animation: drawLine 2.5s ease-out forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+.chartLabels {
+  position: absolute;
+  left: -30px;
+  top: 0;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #888;
+}
+
+.feedbackLabel {
+  font-size: 13px;
+  color: #27ae60;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ========== COMPARISON SECTION ========== */
+.comparisonSection {
+  position: absolute;
+  right: 100px;
+  bottom: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: 120px repeat(3, 70px);
+  gap: 12px 20px;
+  align-items: center;
+}
+
+.comparisonHeader {
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.comparisonRow {
+  display: contents;
+  opacity: 0;
+}
+
+.rowAnim {
+  animation: rowFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rowFadeIn {
+  to { opacity: 1; }
+}
+
+.domainName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.checkGreen {
+  font-size: 28px;
+  color: #27ae60;
+  text-align: center;
+}
+
+.crossRed {
+  font-size: 28px;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.materialsRow .domainName {
+  color: #e74c3c;
+}
+
+/* ========== MATERIALS PROBLEMS ========== */
+.materialsProblems {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.problemAnim {
+  animation: problemFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes problemFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.problemLabel {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e74c3c;
+}
+
+.problemDesc {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  max-width: 140px;
+}

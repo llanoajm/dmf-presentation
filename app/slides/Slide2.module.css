@@ -1,0 +1,402 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base animation */
+.shipContainer,
+.sizeComparison,
+.weightStat,
+.suezSection,
+.tradeStat,
+.newspaperSection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Move left when newspaper appears */
+.moveLeft {
+  transform: translateX(-250px) scale(0.75);
+}
+
+/* Suez Canal Section - Centered above ship */
+.suezSection {
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.suezSection.visible {
+  transform: translateX(-50%);
+}
+
+.suezSection.moveLeft {
+  transform: translateX(-50%) translateX(-250px) scale(0.75);
+}
+
+.canalGraphic {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 80px;
+}
+
+.mediterranean,
+.redSea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seaLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.canal {
+  width: 240px;
+  height: 80px;
+  position: relative;
+}
+
+.canalWater {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #5dade2 0%, #3498db 50%, #2980b9 100%);
+  clip-path: path('M 0 60 C 40 60, 60 20, 120 40 S 200 20, 240 20 L 240 60 C 200 60, 180 20, 120 40 S 40 20, 0 20 Z');
+}
+
+.shipIcon {
+  position: absolute;
+  z-index: 2;
+  offset-path: path('M 10 40 C 50 40, 70 20, 120 30 S 190 20, 230 20');
+  offset-distance: 0%;
+}
+
+.shipIconAnim {
+  animation: sailCurved 12s ease-in-out infinite;
+}
+
+@keyframes sailCurved {
+  0%, 100% { offset-distance: 0%; }
+  50% { offset-distance: 100%; }
+}
+
+.miniShip {
+  width: 24px;
+  height: 10px;
+  background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+  border-radius: 2px 6px 2px 2px;
+  position: relative;
+}
+
+.miniShip::before {
+  content: '';
+  position: absolute;
+  right: 2px;
+  top: -6px;
+  width: 6px;
+  height: 6px;
+  background: #ecf0f1;
+  border-radius: 1px;
+}
+
+.miniShip::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  right: 10px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e74c3c 0px,
+    #e74c3c 3px,
+    #3498db 3px,
+    #3498db 6px,
+    #2ecc71 6px,
+    #2ecc71 9px
+  );
+  border-radius: 1px;
+}
+
+.suezLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Ship Container */
+.shipContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shipContainer.visible {
+  transform: translate(-50%, -50%);
+}
+
+.shipContainer.moveLeft {
+  transform: translate(-50%, -50%) translateX(-250px) scale(0.75);
+}
+
+.shipName {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.ship {
+  position: relative;
+  width: 500px;
+  height: 120px;
+}
+
+.hull {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+  border-radius: 0 0 8px 8px;
+  clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+}
+
+.bridge {
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+  width: 60px;
+  height: 70px;
+  background: linear-gradient(180deg, #ecf0f1 0%, #bdc3c7 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+.bridge::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 15px;
+  background: #34495e;
+  border-radius: 2px 2px 0 0;
+}
+
+.containers {
+  position: absolute;
+  left: 30px;
+  right: 120px;
+  bottom: 50px;
+  height: 60px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.container {
+  border-radius: 2px;
+  opacity: 0;
+  animation: containerLoad 0.3s ease forwards;
+}
+
+@keyframes containerLoad {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.waterLine {
+  width: 600px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #3498db 20%, #3498db 80%, transparent 100%);
+  margin-top: 8px;
+  opacity: 0.5;
+}
+
+/* Size Comparison */
+.sizeComparison {
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sizeComparison.visible {
+  transform: translateX(-50%);
+}
+
+.sizeComparison.moveLeft {
+  transform: translateX(-50%) translateX(-250px) scale(0.75);
+}
+
+.fieldsRow {
+  display: flex;
+  gap: 8px;
+}
+
+.footballField {
+  width: 100px;
+  height: 60px;
+  background: linear-gradient(180deg, #27ae60 0%, #1e8449 100%);
+  border-radius: 4px;
+  position: relative;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.fieldAnim {
+  animation: growField 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes growField {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.footballField::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.sizeLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.1em;
+}
+
+/* Weight Stat */
+.weightStat {
+  top: 80px;
+  right: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.weightStat.moveLeft {
+  transform: translateX(-250px) scale(0.75);
+}
+
+.weightNumber {
+  font-size: 72px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.weightUnit {
+  font-size: 20px;
+  font-weight: 400;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Trade Stat - Top Left */
+.tradeStat {
+  top: 80px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tradeStat.moveLeft {
+  transform: translateX(-100px) scale(0.75);
+}
+
+.tradePercent {
+  font-size: 72px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.tradeLabel {
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+}
+
+/* Newspaper Section */
+.newspaperSection {
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%) translateX(50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newspaperSection.visible {
+  transform: translateY(-50%) translateX(0);
+}
+
+.newspaperWrapper {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.newspaperImage {
+  display: block;
+  max-height: 70vh;
+  width: auto;
+  object-fit: contain;
+}

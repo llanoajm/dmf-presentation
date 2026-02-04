@@ -1,0 +1,461 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #f8f7f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  font-family: 'Nanum Myeongjo', Georgia, serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base animations */
+.shieldSection,
+.scarcitySection,
+.slowSection,
+.trialSection,
+.workflowSection,
+.shieldDesc {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* ========== SHIELD/COATING SECTION ========== */
+.shieldSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.shieldMoveLeft {
+  transform: translateX(-280px) scale(0.8);
+}
+
+.shieldHide {
+  opacity: 0 !important;
+  transform: translateX(-280px) scale(0.7);
+  pointer-events: none;
+}
+
+.shieldVisual {
+  width: 400px;
+  height: 200px;
+  position: relative;
+}
+
+.surface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+  border-radius: 4px;
+}
+
+.coating {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coatingLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+.proteins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+.protein {
+  position: absolute;
+  top: 80px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, #e74c3c 0%, #c0392b 100%);
+  border-radius: 50% 30% 50% 30%;
+  opacity: 0;
+}
+
+.proteinsAnimate .protein {
+  animation: proteinBounce 2s ease-in-out infinite;
+}
+
+@keyframes proteinBounce {
+  0% { top: 0; opacity: 0; transform: rotate(0deg); }
+  30% { opacity: 1; }
+  50% { top: 60px; transform: rotate(180deg); }
+  51% { top: 60px; }
+  70% { opacity: 1; }
+  100% { top: 0; opacity: 0; transform: rotate(360deg); }
+}
+
+.shieldTitle {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.shieldDesc {
+  font-size: 20px;
+  color: #666;
+  font-style: italic;
+  transform: translateY(10px);
+}
+
+.shieldDesc.visible {
+  transform: translateY(0);
+}
+
+/* ========== SCARCITY SECTION ========== */
+.scarcitySection {
+  position: absolute;
+  right: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  transform: translateX(30px);
+}
+
+.scarcitySection.visible {
+  transform: translateX(0);
+}
+
+.scarcityHide {
+  opacity: 0 !important;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.scarcityVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vialRow {
+  display: flex;
+  gap: 12px;
+}
+
+.vial {
+  width: 28px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.05) 100%);
+  border: 2px solid #ccc;
+  border-radius: 0 0 14px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vialFilled {
+  border-color: #3498db;
+}
+
+.vialEmpty {
+  border-color: #ddd;
+}
+
+.vialFilled .vialLiquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(180deg, #5dade2 0%, #3498db 100%);
+  border-radius: 0 0 12px 12px;
+}
+
+.scarcityLabel {
+  font-size: 28px;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+/* ========== SLOW SECTION ========== */
+.slowSection {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slowMoveUp {
+  transform: translateY(-250px) scale(0.6);
+  opacity: 0.3;
+}
+
+.hourglassContainer {
+  width: 100px;
+  height: 160px;
+}
+
+.hourglass {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hourglassTop {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, transparent 100%);
+  border: 3px solid #1a1a1a;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+}
+
+.hourglassNeck {
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  right: 35%;
+  height: 10%;
+  background: #1a1a1a;
+}
+
+.hourglassBottom {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 45%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.05) 0%, transparent 100%);
+  border: 3px solid #1a1a1a;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+  overflow: hidden;
+}
+
+.sand {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 0;
+  background: linear-gradient(180deg, #f39c12 0%, #d68910 100%);
+  border-radius: 0 0 6px 6px;
+  transition: height 3s ease-in-out;
+}
+
+.sandFall {
+  height: 70%;
+}
+
+.slowText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slowLabel {
+  font-size: 24px;
+  color: #666;
+}
+
+.slowEmphasis {
+  font-size: 72px;
+  font-weight: 800;
+  color: #e74c3c;
+  letter-spacing: 0.05em;
+}
+
+/* ========== TRIAL SECTION ========== */
+.trialSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trialMoveLeft {
+  transform: translateX(-320px) scale(0.75);
+}
+
+.trialTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.experimentGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.experiment {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.experimentAnim {
+  animation: experimentPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes experimentPop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.experiment:nth-child(n) {
+  color: #666;
+}
+
+.experiment:nth-child(7n) {
+  color: #fff;
+}
+
+.experiment:nth-child(5n) {
+  color: #fff;
+}
+
+.trialLabel {
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
+}
+
+/* ========== WORKFLOW SECTION ========== */
+.workflowSection {
+  position: absolute;
+  top: 50%;
+  right: 140px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.workflowTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.cycleContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cycleStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: cycleFadeIn 0.5s ease forwards;
+}
+
+.workflowSection.visible .cycleStep {
+  opacity: 1;
+}
+
+@keyframes cycleFadeIn {
+  to { opacity: 1; }
+}
+
+.cycleIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.cycleIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.waitIcon {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.cycleLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.waitTime {
+  font-size: 12px;
+  color: #e74c3c;
+  font-style: italic;
+}
+
+.cycleArrow {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 30px;
+}
+
+.loopIndicator {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+}
+
+.loopArrow {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.loopAnim .loopArrow {
+  animation: loopFadeIn 0.8s 0.8s ease forwards;
+}
+
+@keyframes loopFadeIn {
+  to { opacity: 1; }
+}
