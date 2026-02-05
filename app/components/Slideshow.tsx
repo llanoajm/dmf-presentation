@@ -30,11 +30,27 @@ export default function Slideshow({ slides }: SlideshowProps) {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const lastAdvanceRef = useRef(0)
 
-  // Reset animation step when slide changes
+  // Reset animation step when slide changes + broadcast to presenter view
   // Note: totalSteps is set by each slide's useEffect, don't reset it here
   useEffect(() => {
     setAnimationStep(0)
+    // Broadcast to presenter view
+    localStorage.setItem('currentSlide', String(currentSlide + 1))
   }, [currentSlide])
+
+  // Listen for navigation from presenter view
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'currentSlide' && e.newValue) {
+        const newSlide = parseInt(e.newValue) - 1
+        if (newSlide !== currentSlide && newSlide >= 0 && newSlide < slides.length) {
+          setCurrentSlide(newSlide)
+        }
+      }
+    }
+    window.addEventListener('storage', handleStorage)
+    return () => window.removeEventListener('storage', handleStorage)
+  }, [currentSlide, slides.length])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -123,6 +139,11 @@ export default function Slideshow({ slides }: SlideshowProps) {
         } else {
           document.exitFullscreen()
         }
+      }
+
+      // P key - open presenter view
+      if (e.key === 'p' || e.key === 'P') {
+        window.open('/presenter', 'presenter', 'width=600,height=400')
       }
     }
 
